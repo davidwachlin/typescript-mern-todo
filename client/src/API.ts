@@ -14,7 +14,7 @@ export const getTodos = async (): Promise<AxiosResponse<ApiDataType>> => {
 };
 
 export const addTodo = async (
-  formData: ITodo,
+  formData: TodoForm,
 ): Promise<AxiosResponse<ApiDataType>> => {
   try {
     const todo: Omit<ITodo, '_id'> = {
@@ -22,12 +22,15 @@ export const addTodo = async (
       description: formData.description,
       status: false,
     };
+    console.log('API.ts todo:')
+    console.log(todo)
     const saveTodo: AxiosResponse<ApiDataType> = await axios.post(
       `${baseUrl}/add-todo`,
       todo,
     );
     return saveTodo;
   } catch (error) {
+    console.error(error);
     throw new Error(error);
   }
 };

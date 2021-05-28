@@ -7,6 +7,11 @@ interface ITodo {
   updatedAt?: string;
 }
 
+interface TodoForm {
+  name: string
+  description: string
+}
+
 interface TodoProps {
   todo: ITodo;
 }
